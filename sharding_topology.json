@@ -1,0 +1,23 @@
+{
+  "database_topology": {
+    "engine_version": "PostgreSQL-15-Distributed",
+    "replication_factor": 3,
+    "sharding_strategy": "consistent_hashing",
+    "active_partitions": {
+      "shard_01_emea": {
+        "ip_endpoint": "10.0.4.12",
+        "allowed_throughput_ops": 50000,
+        "failover_target": "shard_01_backup"
+      },
+      "shard_02_apac": {
+        "ip_endpoint": "10.0.4.13",
+        "allowed_throughput_ops": 50000,
+        "failover_target": "shard_02_backup"
+      }
+    },
+    "safeguards": {
+      "prevent_cross_shard_joins": true,
+      "max_connection_pool_per_node": 500
+    }
+  }
+}
